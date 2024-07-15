@@ -8,9 +8,7 @@ let app = express()
 
 app.use(express.json())
 app.use(cors())
-
 app.use('/employe',emprouter)
-
 app.all('*',(req,res,next)=>{
     res.status(404).json({error:true,message:"page not found"})
     

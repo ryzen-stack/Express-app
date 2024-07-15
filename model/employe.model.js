@@ -20,6 +20,7 @@ let employeSchema = new Schema({
         default:"male"
     },
     mobile:{
+        
         required : {value:true, message: "mobile is mandatory"},
         type:String,
         minlength:[10, "mobile should have 10 digits"]
@@ -28,14 +29,17 @@ let employeSchema = new Schema({
         required : {value:true, message:"email is mandatory"},
         type:String
     },
-    fef: {
-        type: String,
-        required: true,
-        enum: {
-            values: ["reactjs", "vuejs", "angularjs"],
-            message: "Only reactjs,vuejs, angularjs  are allowed"
-        }
-    }
+    // password:{
+    //     required:{value:true, message:"password is mandatory"},
+    //     minlength:[10,"password should have 10 digits"]
+    // },
+    // confirmpassword:{
+    //     required:{value:true, message:"confirm password is mandatory"},
+    //     minlength:[10,"confirm password should have is mandatory"]
+    // }
+    
+
+    
 }, { timestamps: true })
 
 
