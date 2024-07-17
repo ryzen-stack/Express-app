@@ -3,7 +3,9 @@ const employe = require('../model/employe.model');
 const {subscribeMail,otp}= require('../mail');
 
 
+
 let addemploye = async (req,res,next) =>{
+    
     try{
         let {name,age,designation,gender,mobile,email} = req.body
         let isUserAvailable = await employe.findOne({$or:[{mobile},{email}]})
@@ -53,6 +55,7 @@ let getemployes = async (req,res,next) =>{
 let getemploye = async (req,res,next) =>{
     try {
         let {pid} = req.params
+       
         let getEmp = await employe.findById(pid)
         if(getEmp){
             return res.status(201).json({error:true,message:"employe one successfully",data:getEmp})
@@ -69,11 +72,12 @@ let getemploye = async (req,res,next) =>{
 let updateemploye = async (req,res,next) =>{
     try {
         let {pid} = req.params
-        let {age} = req.body
+        
+        let {name,age,designation, gender,mobile,email} = req.body
+        console.log(req.body)
         let updateEmp = await employe.findById(pid)
-        console.log(updateEmp)
         if(updateEmp){
-            let details = await employe.findByIdAndUpdate(pid, {$set:{age}}, { new: true, runValidators: true })
+            let details = await employe.findByIdAndUpdate(pid, {$set:{name,age,designation,gender,mobile,email}},{ new: true, runValidators: true })
             return res.status(201).json({error:true,message:"employe updated successfully", data:details})
 
         }

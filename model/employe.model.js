@@ -16,11 +16,10 @@ let employeSchema = new Schema({
     },
     gender:{
         
-        type:String,
-        default:"male"
+        type:String
     },
     mobile:{
-        
+
         required : {value:true, message: "mobile is mandatory"},
         type:String,
         minlength:[10, "mobile should have 10 digits"]

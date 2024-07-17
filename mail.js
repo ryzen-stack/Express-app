@@ -5,8 +5,8 @@ const { createTransport } = require('nodemailer');
 let transporter = createTransport({
     service: "gmail",
     auth: {
-        user: "anil91083128@gmail.com",
-        pass: "pzrlinpgbdrwyqlr"
+        user: process.env.EMAIL,
+        pass: process.env.PASSKEY
     }
 })
 
